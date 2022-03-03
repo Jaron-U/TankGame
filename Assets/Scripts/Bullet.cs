@@ -17,4 +17,23 @@ public class Bullet : MonoBehaviour
         //                  沿x轴移动                                      沿世界坐标系
         transform.Translate(transform.up * moveSpeed * Time.deltaTime, Space.World);
     }
+
+     //触发器
+    private void OnTriggerEnter2D(Collider2D collision) {
+        switch (collision.tag){
+            case "Tank":
+                collision.SendMessage("Die");
+                break;
+            case "Enemy":
+                break;
+            case "Block":
+                break;
+            case "Wall":
+                break;
+            case "Home":
+                break;
+            default:
+                break;
+        }
+    }
 }

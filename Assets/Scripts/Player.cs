@@ -9,12 +9,16 @@ public class Player : MonoBehaviour{
     private Vector3 bullectEulerAngles;
     //子弹冷却时间
     private float timeVal;
+    private float defendTimeVal = 3;//无敌时间
+    private bool isDefended = true;//判断玩家是否是无敌状态
 
     //引用
     private SpriteRenderer sr;
     public Sprite[] tankSprite;
     public GameObject bulletPrefab; //得到子弹预制体的引用
-    
+    public GameObject explosionPrefab; //爆炸预制体的引用
+    public GameObject defendEffectPrefab; //保护预制体的引用
+
     private void Awake(){
         sr = GetComponent<SpriteRenderer>();
     }
@@ -40,12 +44,24 @@ public class Player : MonoBehaviour{
         //     sr.sprite = tankSprite[0];
         // }
         
-        //如果大于0.4秒才能发射
+        //检查无敌状态
+        if(isDefended){
+            defendEffectPrefab.SetActive(true);
+            defendTimeVal -= Time.deltaTime;
+            if (defendTimeVal<=0){
+                isDefended = false;
+                defendEffectPrefab.SetActive(false);
+            }
+        }
+
+
+        //攻击CD如果大于0.4秒才能发射 
         if(timeVal>=0.4f){
             Attack();
         }else{
             timeVal+=Time.deltaTime;
         }
+        
     }
     
     //固定时间和帧率
@@ -94,4 +110,14 @@ public class Player : MonoBehaviour{
         }
     }
 
+    //Tank 死亡方法
+    private void Die(){
+        if (isDefended){
+            return;
+        }
+        //产生爆炸特效
+        Instantiate(explosionPrefab, transform.position, transform.rotation);
+        //死亡
+        Destroy(gameObject);
+    }
 }
