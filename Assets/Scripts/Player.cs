@@ -111,7 +111,7 @@ public class Player : MonoBehaviour{
     }
 
     //Tank 死亡方法
-    private void Die(){
+    private void TankDie(){
         if (isDefended){
             return;
         }
