@@ -29,10 +29,14 @@ public class Bullet : MonoBehaviour
                 //如果不是自己的子弹
                 if(!isPlayerBullect){
                     collision.SendMessage("TankDie");
+                    Destroy(gameObject);//自己被销毁
                 }
                 break;
             case "Enemy":
-                
+                if(isPlayerBullect){
+                    collision.SendMessage("TankDie");
+                     Destroy(gameObject);
+                }
                 break;
             case "Block":
                 Destroy(collision.gameObject); //被撞物体被销毁

@@ -119,5 +119,7 @@ public class Player : MonoBehaviour{
         Instantiate(explosionPrefab, transform.position, transform.rotation);
         //死亡
         Destroy(gameObject);
+        //调用恢复方法的flag. 
+        PlayerManager.Instance.isDead = true;
     }
 }

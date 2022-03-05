@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3570177562658518394}
   - component: {fileID: 3570177562658518395}
   - component: {fileID: 3570177562658518392}
+  - component: {fileID: 1849356546}
   m_Layer: 0
   m_Name: Born
   m_TagString: Untagged
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 83edbfb8684dd084c9c1b5a05accb675, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -102,3 +103,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1849356546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3570177562658518393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 128e97ef7ee5f4cd68061df477c77a4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 1530951372075556226, guid: 91a9a41d6409e49ca855b3f422d6949f, type: 3}
+  enemyPrefabList:
+  - {fileID: 7026636855916838673, guid: f10b2297261b1466f92d3d55aed905e5, type: 3}
+  - {fileID: 6335689773212018662, guid: 6950fe43c63444ab6967c40d1c11d701, type: 3}
+  creatPlayer: 0

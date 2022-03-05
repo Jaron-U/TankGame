@@ -7,7 +7,7 @@ public class Home : MonoBehaviour
     private SpriteRenderer sr;//拿到组件
     public Sprite BrokenSprite; //破坏图片
     public GameObject explosionPrefab; //爆炸效果
-
+    
 
     // Start is called before the first frame update
     void Start()
@@ -16,14 +16,13 @@ public class Home : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-
+    void Update(){
     }
-
+    
     //家被摧毁
     public void HomeDie(){
         sr.sprite = BrokenSprite;
         Instantiate(explosionPrefab, transform.position, transform.rotation);
+        PlayerManager.Instance.isDefeat = true;
     }
 }
