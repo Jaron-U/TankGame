@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   isPlayerBullect: 0
+  wallAudio: {fileID: 8300000, guid: a36f2278a85dfc8458b569c2b95bacb6, type: 3}
 --- !u!61 &5919743525421493869
 BoxCollider2D:
   m_ObjectHideFlags: 0

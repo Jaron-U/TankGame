@@ -9,6 +9,8 @@ public class Bullet : MonoBehaviour
     //是否是玩家的子弹  bool默认是false
     public bool isPlayerBullect;
 
+    public AudioClip wallAudio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,9 @@ public class Bullet : MonoBehaviour
                 break;
             case "Wall":
                 Destroy(gameObject);
+                if(isPlayerBullect){
+                    AudioSource.PlayClipAtPoint(wallAudio, transform.position);
+                }
                 break;
             case "Home":
                 collision.SendMessage("HomeDie");

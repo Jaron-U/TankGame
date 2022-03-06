@@ -18,6 +18,8 @@ public class Player : MonoBehaviour{
     public GameObject bulletPrefab; //得到子弹预制体的引用
     public GameObject explosionPrefab; //爆炸预制体的引用
     public GameObject defendEffectPrefab; //保护预制体的引用
+    public AudioSource moveAudio;
+    public AudioClip[] tankAudio;
 
     private void Awake(){
         sr = GetComponent<SpriteRenderer>();
@@ -94,7 +96,18 @@ public class Player : MonoBehaviour{
             sr.sprite = tankSprite[1];
             bullectEulerAngles = new Vector3(0, 0, -90);
         }
-        
+        if(Mathf.Abs(h)>0.05f){
+            moveAudio.clip = tankAudio[1];
+            if(!moveAudio.isPlaying){
+                moveAudio.Play();
+            }
+        }else{
+            moveAudio.clip = tankAudio[0];
+             if(!moveAudio.isPlaying){
+                moveAudio.Play();
+            }
+        }
+
         //防止玩家同时按下两个按键
         if (h!=0){
             return;
@@ -107,6 +120,17 @@ public class Player : MonoBehaviour{
         }else if(v>0){
             sr.sprite = tankSprite[0];
             bullectEulerAngles = new Vector3(0,0,0);
+        }
+        if(Mathf.Abs(v)>0.05f){
+            moveAudio.clip = tankAudio[1];
+            if(!moveAudio.isPlaying){
+                moveAudio.Play();
+            }
+        }else{
+            moveAudio.clip = tankAudio[0];
+             if(!moveAudio.isPlaying){
+                moveAudio.Play();
+            }
         }
     }
 
